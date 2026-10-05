@@ -2,5 +2,73 @@
 
 [ext_resource type="Script" uid="uid://h1aqbjgcplvd" path="res://script/main.gd" id="1_itxqv"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itxqv"]
+bg_color = Color(1, 1, 1, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.62763983, 0.69398874, 1)
+border_blend = true
+
 [node name="Node2D" type="Node2D" unique_id=181994137]
 script = ExtResource("1_itxqv")
+
+[node name="Control" type="Node" parent="." unique_id=1553268532]
+
+[node name="Panel" type="Panel" parent="Control" unique_id=5558733]
+offset_right = 512.0
+offset_bottom = 512.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_itxqv")
+
+[node name="Right" type="Button" parent="Control" unique_id=1315584429]
+offset_left = 552.0
+offset_top = 256.0
+offset_right = 661.0
+offset_bottom = 297.0
+text = "RIGHT
+"
+
+[node name="Left" type="Button" parent="Control" unique_id=1817458722]
+offset_left = 552.0
+offset_top = 176.0
+offset_right = 661.0
+offset_bottom = 217.0
+text = "LEFT
+"
+
+[node name="Down" type="Button" parent="Control" unique_id=475417137]
+offset_left = 552.0
+offset_top = 96.0
+offset_right = 661.0
+offset_bottom = 137.0
+text = "DOWN
+
+"
+
+[node name="Up" type="Button" parent="Control" unique_id=1975966128]
+offset_left = 552.0
+offset_top = 16.0
+offset_right = 661.0
+offset_bottom = 57.0
+text = "UP
+"
+
+[node name="Reset" type="Button" parent="Control" unique_id=1743998077]
+offset_left = 552.0
+offset_top = 368.0
+offset_right = 661.0
+offset_bottom = 409.0
+text = "Reset
+
+
+"
+
+[node name="Pieces" type="Node" parent="." unique_id=659114918]
+
+[connection signal="pressed" from="Control/Right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="Control/Left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="Control/Down" to="." method="_on_down_pressed"]
+[connection signal="pressed" from="Control/Up" to="." method="_on_up_pressed"]
+[connection signal="pressed" from="Control/Reset" to="." method="_on_reset_pressed"]
