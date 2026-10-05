@@ -12,7 +12,7 @@ var gif_bytes := {}  #动态加载的字典
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
 	for i in range(1,44):
-		gif_bytes[i] = FileAccess.get_file_as_bytes("res://img/milk_dragon_img/%d.gif" % i)  #加载图片，手动制作纹理，一人一份
+		gif_bytes[i] = FileAccess.get_file_as_bytes("res://img/milk_dragon_img/%d.bin" % i)  #加载图片，手动制作纹理，一人一份
 	random_place()
 
 func _process(_delta: float) -> void:
@@ -105,11 +105,14 @@ func _on_up_pressed() -> void: #上滑
 			for k in range(1,4-j):
 				if column[j+k] == null :
 					continue
+				 
 				if column[j].log2_value == column[j+k].log2_value: #相等，合并
 					column[j].log2_value +=1					 
 					column[j+k].queue_free()	
 					column[j+k] = null				 
 					moved = true		
+					break
+				else:
 					break
 					
 		#再通过冒泡法把所有的null下侧
@@ -138,6 +141,8 @@ func _on_down_pressed() -> void:
 					column[3-j-k].queue_free()	
 					column[3-j-k] = null				 
 					moved = true		
+					break
+				else:
 					break
 					
 		#再通过冒泡法把所有的null下侧
@@ -170,6 +175,8 @@ func _on_left_pressed() -> void:
 						column[j+k] = null											 
 						moved = true		
 						break	
+					else:
+						break
 					
 		#再通过冒泡法把所有的null下侧
 		for j in range(4):
@@ -204,6 +211,8 @@ func _on_right_pressed() -> void:
 						column[j+k]=null						 
 						moved = true		
 						break	
+					else:
+						break
 					
 		#再通过冒泡法把所有的null下侧
 		for j in range(4):
