@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dby6hp8emck5a"]
 
 [ext_resource type="Script" uid="uid://demq8vtuo3adk" path="res://script/piece.gd" id="1_3653e"]
-[ext_resource type="Texture2D" uid="uid://dbnxfcxkqm6py" path="res://img/icon.svg" id="1_nrwpe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_itxqv"]
 font_size = 57
@@ -10,8 +9,13 @@ font_color = Color(0, 1, 0, 1)
 [node name="Piece" type="Node2D" unique_id=221363772]
 script = ExtResource("1_3653e")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=595934721]
-texture = ExtResource("1_nrwpe")
+[node name="AnimatedImagePlayer" type="AnimatedImagePlayer" parent="." unique_id=404043702]
+expand_mode = 1
+stretch_mode = 0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
 
 [node name="Value" type="Label" parent="." unique_id=769283165]
 offset_left = -41.0

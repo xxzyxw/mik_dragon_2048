@@ -1,15 +1,21 @@
 #本程序面向过程进行开发
 
 extends Node2D
+
+signal update_img(gifs)
+
 var scene_piece := preload("res://scene/piece.tscn")
 
 var map: Array[Array] = [[null,null,null,null],[null,null,null,null],[null,null,null,null],[null,null,null,null]]
+var gif_bytes := {}  #动态加载的字典
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:	 
+func _ready() -> void:	
+	for i in range(1,44):
+		gif_bytes[i] = FileAccess.get_file_as_bytes("res://img/milk_dragon_img/%d.gif" % i)  #加载图片，手动制作纹理，一人一份
 	random_place()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("up"):
 		_on_up_pressed()
 	elif  Input.is_action_just_pressed("down"):
@@ -61,8 +67,9 @@ func update_map() -> void: #将Map数据同步到场景树
 		for j in range(4):
 			if map[i][j]!=null:
 				map[i][j].position = 128*Vector2(i+1,j+1)-Vector2(64,64)
-				map[i][j].get_node("Value").text = str(2**map[i][j].log2_value)
+				#map[i][j].get_node("Value").text = str(2**map[i][j].log2_value)
 				$Pieces.add_child(map[i][j])
+	update_img.emit(gif_bytes)
 #endregion
  
 #region 显得有些冗余的历史遗留函数
@@ -73,7 +80,10 @@ func place_piece(map_position:Vector2,log2_value:=1) -> Node2D: #放置棋子于
 	# if(randf()>0.9): #有10%概率生成一个4
 	# 	log2_value =2 
 	piece.log2_value = log2_value
-	piece.get_node("Value").text =str(2**log2_value)
+
+	update_img.connect(piece._on_update_img)
+
+	#piece.get_node("Value").text =str(2**log2_value)
 	#同步到map变量
 	map[map_position.x-1][map_position.y-1]=piece;
 	return  piece

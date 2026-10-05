@@ -1,0 +1,16 @@
+[remap]
+
+importer="texture_gif"
+importer_version=3
+type="GIFTexture"
+uid="uid://btrverrvsmad8"
+path="res://.godot/imported/18.gif-59ed00f855ccb67fb3f97be98e366f58.res"
+
+[deps]
+
+source_file="res://img/milk_dragon_img/18.gif"
+dest_files=["res://.godot/imported/18.gif-59ed00f855ccb67fb3f97be98e366f58.res"]
+
+[params]
+
+storage/compress=true

@@ -12,6 +12,9 @@ border_width_bottom = 4
 border_color = Color(0, 0.62763983, 0.69398874, 1)
 border_blend = true
 
+[sub_resource type="LabelSettings" id="LabelSettings_85mha"]
+font_size = 23
+
 [node name="Node2D" type="Node2D" unique_id=181994137]
 script = ExtResource("1_itxqv")
 
@@ -64,6 +67,15 @@ text = "Reset
 
 
 "
+
+[node name="Label" type="Label" parent="Control" unique_id=394584164]
+offset_left = 512.0
+offset_top = 424.0
+offset_right = 696.0
+offset_bottom = 496.0
+text = "PC 可以按 wasd
+made by 新箱子"
+label_settings = SubResource("LabelSettings_85mha")
 
 [node name="Pieces" type="Node" parent="." unique_id=659114918]
 
